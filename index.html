@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shritej - Web Designer </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Custom animations matching Framer Motion ease: [0.16, 1, 0.3, 1] */
+    .word-pull-up {
+      display: inline-block;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .word-pull-up.in-view {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .fade-up {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.in-view {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .noise-overlay {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    html.lenis {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Section styling */
+    .section-container {
+      padding: 4rem 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-container {
+        padding: 8rem 4rem;
+      }
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      background: #111;
+      aspect-ratio: 16/9;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-cover: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    /* New Works List Styling */
+    .work-item {
+      border-top: 1px solid rgba(225, 224, 204, 0.2);
+      padding: 3rem 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .work-item:last-child {
+      border-bottom: 1px solid rgba(225, 224, 204, 0.2);
+    }
+
+    .work-item:hover {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .work-item:hover .work-item-title {
+      opacity: 0.3;
+    }
+
+    .work-item-title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      transition: opacity 0.4s ease;
+    }
+
+    .hover-image-container {
+      position: fixed;
+      width: 400px;
+      height: 250px;
+      pointer-events: none;
+      z-index: 50;
+      overflow: hidden;
+      border-radius: 1rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .hover-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: #111;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      padding: 2rem;
+      color: #E1E0CC;
+    }
+
+    .mobile-menu-link {
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .accent-dot {
+      width: 12px;
+      height: 12px;
+      background: #E1E0CC;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .close-menu-btn {
+      width: 60px;
+      height: 60px;
+      background: #FF4646;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .mobile-toggle .dot {
+      width: 8px;
+      height: 8px;
+      background: #E1E0CC;
+      border-radius: 50%;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      background: #E1E0CC;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.1s ease;
+    }
+
+    .cursor-hover {
+      transform: scale(4);
+    }
+
+    /* Scroll Progress */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: #E1E0CC;
+      z-index: 100;
+    }
+
+    /* Footer Redesign Styles */
+    .footer-heading {
+      font-size: clamp(3rem, 10vw, 8rem);
+      line-height: 0.9;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-avatar {
+      width: clamp(50px, 8vw, 80px);
+      height: clamp(50px, 8vw, 80px);
+      border-radius: 50%;
+      background: #333;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 1rem;
+    }
+
+    .footer-circle-btn {
+      width: 180px;
+      height: 180px;
+      background: #FF4646;
+      border-radius: 50%;
+      display: none; /* Hidden on mobile */
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.3s ease;
+      position: absolute;
+      right: 10%;
+      bottom: -40px;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      .footer-circle-btn {
+        display: flex;
+      }
+    }
+
+    .footer-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      border: 1px solid rgba(225, 224, 204, 0.2);
+      border-radius: 999px;
+      color: #E1E0CC;
+      text-decoration: none;
+      font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+      transition: all 0.3s ease;
+    }
+
+    .footer-pill-btn:hover {
+      border-color: #E1E0CC;
+      background: rgba(225, 224, 204, 0.05);
+    }
+
+    .footer-bottom-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(225, 224, 204, 0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-bottom-value {
+      font-size: 1rem;
+      color: #E1E0CC;
+    }
+
+    /* Mobile Works Section Styles */
+    .mobile-work-card {
+      margin-bottom: 3rem;
+    }
+
+    .mobile-work-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-work-title {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: #E1E0CC;
+    }
+
+    .mobile-work-divider {
+      border-top: 1px solid rgba(225, 224, 204, 0.2);
+      margin: 1rem 0;
+    }
+
+    .mobile-work-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: rgba(225, 224, 204, 0.8);
+    }
+
+    /* Marquee Styles */
+    .marquee-container {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .marquee-content {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .marquee-text {
+      font-size: clamp(8rem, 24vw, 20rem);
+      font-weight: 500;
+      color: #E1E0CC;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      padding-right: 0.1em;
+    }
+
+    /* Hero Info Box */
+    .hero-info-box {
+      position: absolute;
+      top: 30%;
+      left: 1.5rem;
+      z-index: 10;
+      color: #E1E0CC;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @media (min-width: 768px) {
+      .hero-info-box {
+        left: 4rem;
+        top: 25%;
+      }
+    }
+
+    .hero-info-text {
+      font-size: clamp(1.2rem, 3vw, 2.5rem);
+      line-height: 1.1;
+      font-weight: 400;
+      margin-top: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background-color: #FF4040;
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-loader {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 6px;
+      column-gap: 6px;
+      animation: circleRotate 10s linear infinite;
+    }
+
+    .circle-loader .circle {
+      background-color: white;
+      animation: circleScaleDelay 1.3s infinite ease-in-out;
+      border-radius: 50%;
+    }
+
+    .circle-loader .circle1 { animation-delay: 0.2s; }
+    .circle-loader .circle2 { animation-delay: 0.3s; }
+    .circle-loader .circle3 { animation-delay: 0.4s; }
+    .circle-loader .circle4 { animation-delay: 0.1s; }
+    .circle-loader .circle5 { animation-delay: 0.2s; }
+    .circle-loader .circle6 { animation-delay: 0.3s; }
+    .circle-loader .circle7 { animation-delay: 0s; }
+    .circle-loader .circle8 { animation-delay: 0.1s; }
+    .circle-loader .circle9 { animation-delay: 0.2s; }
+
+    @keyframes circleScaleDelay {
+      0%, 70%, 100% { transform: scale3D(1, 1, 1); }
+      35% { transform: scale3D(0, 0, 1); }
+    }
+
+    @keyframes circleRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .circle-loader {
+        width: 60px;
+        height: 60px;
+        row-gap: 4px;
+        column-gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-black m-0 p-0 overflow-x-hidden text-[#E1E0CC]">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="circle-loader">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+      <div class="circle circle5"></div>
+      <div class="circle circle6"></div>
+      <div class="circle circle7"></div>
+      <div class="circle circle8"></div>
+      <div class="circle circle9"></div>
+    </div>
+  </div>
+
+  <div class="custom-cursor hidden md:block"></div>
+  <div class="progress-bar"></div>
+  <div class="hover-image-container hidden lg:block">
+    <img src="" alt="Work Preview">
+  </div>
+
+  <!-- Smooth scroll wrapper -->
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <section class="h-screen w-full p-2 md:p-4">
+        <div class="relative h-full w-full overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem]">
+          <!-- Background Video -->
+          <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover" src="hero.mp4"></video>
+
+          <!-- Noise overlay -->
+          <div class="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay"></div>
+
+          <!-- Gradient overlay -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60">
+          </div>
+
+          <!-- Navbar -->
+          <nav class="absolute left-1/2 top-0 z-20 -translate-x-1/2">
+            <div
+              class="flex items-center gap-3 rounded-b-2xl bg-black px-4 py-2 sm:gap-6 md:gap-12 md:rounded-b-3xl md:px-8 lg:gap-14">
+              <!-- Desktop Menu -->
+              <div class="hidden md:flex items-center gap-6 md:gap-12 lg:gap-14">
+                <a href="work.html"
+                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">Works</a>
+                <a href="#about"
+                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">About</a>
+                <a href="contact.html"
+                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">Contact</a>
+              </div>
+              
+              <!-- Mobile Menu Toggle -->
+              <div class="mobile-toggle md:hidden" id="menu-toggle">
+                <span class="dot"></span>
+                <span class="text-[10px] uppercase tracking-widest text-[#E1E0CC]">Menu</span>
+              </div>
+            </div>
+          </nav>
+
+          <!-- Hero Info Box -->
+          <div class="hero-info-box">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 7L17 17M17 17V7M17 17H7" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="hero-info-text">
+              Freelance<br>Designer & Developer
+            </div>
+          </div>
+
+          <!-- Hero Content (Marquee) -->
+          <div class="marquee-container">
+            <div class="marquee-content" id="hero-marquee">
+              <span class="marquee-text">Shritej Patil —</span>
+              <span class="marquee-text">Shritej Patil —</span>
+              <span class="marquee-text">Shritej Patil —</span>
+              <span class="marquee-text">Shritej Patil —</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Works Section -->
+      <section id="works" class="section-container min-h-screen">
+        <div class="mb-12 flex items-center justify-between md:mb-20">
+          <p class="text-sm md:text-base uppercase tracking-widest text-white/40">Recent Work</p>
+        </div>
+
+        <!-- Desktop View: List Layout -->
+        <div class="hidden md:flex flex-col">
+          <!-- Project 1 -->
+          <a href="manda.html" class="work-item group flex items-center justify-between" data-image="Manda-main.png">
+            <h3 class="work-item-title">Manda Branding</h3>
+            <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Visual Identity & Web</p>
+          </a>
+
+          <!-- Project 2 -->
+          <a href="digital-ecosystem.html" class="work-item group flex items-center justify-between" data-image="Main.png">
+            <h3 class="work-item-title">Martian — Shop Design</h3>
+            <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Strategy & UX</p>
+          </a>
+
+          <!-- Project 3 -->
+          <a href="minimal-portfolio.html" class="work-item group flex items-center justify-between" data-image="Hero-1.png">
+            <h3 class="work-item-title">Mars Designs</h3>
+            <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Development</p>
+          </a>
+
+          <!-- Project 4 -->
+          <a href="creative-direction.html" class="work-item group flex items-center justify-between" data-image="Hero-Section 13.png">
+            <h3 class="work-item-title">Creative Direction</h3>
+            <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Branding & Motion</p>
+          </a>
+        </div>
+
+        <!-- Mobile View: Card Layout (Only 2 projects) -->
+        <div class="flex flex-col md:hidden">
+          <!-- Mobile Project 1 -->
+          <a href="manda.html" class="mobile-work-card reveal block">
+            <div class="rounded-[1rem] overflow-hidden mb-6">
+              <img src="Manda-main.png" alt="Manda Branding" class="mobile-work-image mb-0">
+            </div>
+            <h3 class="mobile-work-title">Manda Branding</h3>
+            <div class="mobile-work-divider"></div>
+            <div class="mobile-work-meta">
+              <span>Visual Identity & Web</span>
+              <span>2024</span>
+            </div>
+          </a>
+
+          <!-- Mobile Project 2 -->
+          <a href="digital-ecosystem.html" class="mobile-work-card reveal block">
+            <div class="rounded-[1rem] overflow-hidden mb-6">
+              <img src="Main.png" alt="Martian — Shop Design" class="mobile-work-image mb-0">
+            </div>
+            <h3 class="mobile-work-title">Martian — Shop Design</h3>
+            <div class="mobile-work-divider"></div>
+            <div class="mobile-work-meta">
+              <span>Strategy & UX</span>
+              <span>2024</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-20 flex justify-center">
+          <a href="work.html" class="group inline-flex items-center gap-2 rounded-full border border-white/20 px-10 py-5 text-sm font-medium uppercase tracking-widest transition-all hover:bg-[#E1E0CC] hover:text-black hover:border-[#E1E0CC]">
+            More work <sup>4</sup>
+          </a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section-container bg-[#E1E0CC] text-black">
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-8">
+            <h2 class="text-4xl font-medium leading-tight tracking-tight md:text-7xl">
+              I believe that <span class="italic text-black/40">good design</span> is invisible, yet its impact is felt in every interaction.
+            </h2>
+          </div>
+          <div class="lg:col-span-4 flex flex-col justify-end">
+            <p class="text-lg leading-relaxed text-black/70 md:text-xl">
+              Based in the intersection of creativity and logic, I help brands build digital products that resonate with their audience and drive meaningful growth.
+            </p>
+            <div class="mt-8 flex gap-4">
+              <div class="h-12 w-12 rounded-full border border-black/10 flex items-center justify-center">
+                <span class="text-xs font-bold">GSAP</span>
+              </div>
+              <div class="h-12 w-12 rounded-full border border-black/10 flex items-center justify-center">
+                <span class="text-xs font-bold">React</span>
+              </div>
+              <div class="h-12 w-12 rounded-full border border-black/10 flex items-center justify-center">
+                <span class="text-xs font-bold">Framer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer id="contact" class="bg-black pt-20 pb-10 px-6 md:px-12 relative">
+        <div class="max-w-[1400px] mx-auto">
+          <!-- Main Footer Top -->
+          <div class="relative border-b border-white/10 pb-32 mb-12">
+            <!-- Mobile Next Project -->
+            <div class="md:hidden text-center mb-20">
+              <p class="text-[10px] uppercase tracking-widest text-white/40 mb-6">Next Project</p>
+              <a href="manda.html" class="text-4xl font-medium tracking-tighter block mb-10">Manda Branding</a>
+              <div class="w-full rounded-[1rem] overflow-hidden">
+                <img src="Manda-main.png" alt="Manda Branding" class="w-full h-auto">
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 mb-10 justify-center md:justify-start">
+              <div class="footer-avatar">
+                <img src="Hero-1.png" alt="Shritej" class="w-full h-full object-cover">
+              </div>
+              <h2 class="footer-heading">Let's work<br>together</h2>
+              <div class="ml-auto hidden md:block">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 30L30 10M30 10H10M30 10V30" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 mt-12 justify-center md:justify-start">
+              <a href="mailto:shritejpatil2806@gmail.com" class="footer-pill-btn">
+                shritejpatil2806@gmail.com
+              </a>
+            </div>
+
+            <!-- Get in touch circle -->
+            <a href="mailto:shritejpatil2806@gmail.com" class="footer-circle-btn magnetic-target">
+              <span>Get in touch</span>
+            </a>
+          </div>
+
+          <!-- Footer Bottom Info -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+            <div>
+              <p class="footer-bottom-label">Version</p>
+              <p class="footer-bottom-value">2024 © Edition</p>
+            </div>
+            <div>
+              <p class="footer-bottom-label">Local Time</p>
+              <p class="footer-bottom-value" id="local-time">00:00 PM GMT+0</p>
+            </div>
+            <div class="col-span-2 md:col-span-2">
+              <p class="footer-bottom-label">Socials</p>
+              <div class="flex flex-wrap gap-6 mt-2">
+                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Awwwards</a>
+                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Instagram</a>
+                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Twitter</a>
+                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <div class="close-menu-btn" id="close-menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+
+    <div class="mt-20">
+      <p class="text-[10px] uppercase tracking-widest text-white/40 mb-10 border-b border-white/10 pb-4">Navigation</p>
+      
+      <div class="flex flex-col gap-6">
+        <a href="#" class="mobile-menu-link group flex items-center">
+          <span class="accent-dot"></span>
+          Home
+        </a>
+        <a href="work.html" class="mobile-menu-link">Work</a>
+        <a href="#about" class="mobile-menu-link">About</a>
+        <a href="contact.html" class="mobile-menu-link">Contact</a>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <p class="text-[10px] uppercase tracking-widest text-white/40 mb-6">Socials</p>
+      <div class="flex flex-wrap gap-6 text-sm">
+        <a href="#" class="hover:text-white/60 transition-colors">Awwwards</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Instagram</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Twitter</a>
+        <a href="#" class="hover:text-white/60 transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lenis
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Sync ScrollTrigger with Lenis
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Preloader Animation
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        const tl = gsap.timeline({
+          onComplete: () => {
+            preloader.style.display = "none";
+            lenis.start();
+          }
+        });
+
+        tl.to(preloader, {
+          yPercent: -100,
+          duration: 1.2,
+          ease: "power4.inOut",
+          delay: 1.5 // Keep loader visible for a moment
+        })
+        .to(".hero-info-box", {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power4.out"
+        }, "-=0.4")
+        .from(".marquee-container", {
+          y: 100,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.out"
+        }, "-=0.8");
+      });
+
+      // Stop scrolling during preload
+      lenis.stop();
+
+      // Marquee Animation
+       const marquee = document.getElementById("hero-marquee");
+       if (marquee) {
+         gsap.to(marquee, {
+           xPercent: -50,
+           repeat: -1,
+           duration: 15,
+           ease: "none"
+         });
+       }
+
+       // GSAP Animations
+       gsap.registerPlugin(ScrollTrigger);
+
+       // Scroll reveals
+       const reveals = document.querySelectorAll(".reveal");
+       reveals.forEach((el) => {
+         gsap.fromTo(el, 
+           { y: 100, opacity: 0 },
+           { 
+             y: 0, 
+             opacity: 1, 
+             duration: 1.2, 
+             ease: "power3.out",
+             scrollTrigger: {
+               trigger: el,
+               start: "top 85%",
+               toggleActions: "play none none none"
+             }
+           }
+         );
+       });
+
+       // Works Section Hover Image Effect
+       const workItems = document.querySelectorAll(".work-item");
+       const hoverContainer = document.querySelector(".hover-image-container");
+       const hoverImage = hoverContainer.querySelector("img");
+
+       workItems.forEach((item) => {
+         item.addEventListener("mouseenter", (e) => {
+           const imagePath = item.getAttribute("data-image");
+           
+           // Pre-load the image
+           hoverImage.src = imagePath;
+           
+           gsap.to(hoverContainer, {
+             opacity: 1,
+             scale: 1,
+             duration: 0.4,
+             ease: "power3.out"
+           });
+         });
+
+         item.addEventListener("mouseleave", () => {
+           gsap.to(hoverContainer, {
+             opacity: 0,
+             scale: 0.8,
+             duration: 0.3,
+             ease: "power2.in"
+           });
+         });
+
+         item.addEventListener("mousemove", (e) => {
+           gsap.to(hoverContainer, {
+             x: e.clientX - 200,
+             y: e.clientY - 125,
+             duration: 0.6,
+             ease: "power2.out"
+           });
+         });
+       });
+
+       // Horizontal parallax for project images
+       const images = document.querySelectorAll(".project-image");
+      images.forEach((img) => {
+        gsap.to(img, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      // Background color change for sections
+      gsap.to("body", {
+        backgroundColor: "#E1E0CC",
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 50%",
+          end: "bottom 50%",
+          scrub: true
+        }
+      });
+
+      // Transition back to black for footer
+      gsap.to("body", {
+        backgroundColor: "#000000",
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 50%",
+          end: "top 10%",
+          scrub: true
+        }
+      });
+
+      // Scroll to top
+      document.getElementById("scroll-to-top")?.addEventListener("click", () => {
+        lenis.scrollTo(0);
+      });
+
+      // Local Time Logic
+      function updateTime() {
+        const timeElement = document.getElementById("local-time");
+        if (timeElement) {
+          const now = new Date();
+          const options = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            hour12: true,
+            timeZoneName: 'short'
+          };
+          timeElement.textContent = now.toLocaleTimeString('en-US', options);
+        }
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      // Custom Cursor Logic
+      const cursor = document.querySelector(".custom-cursor");
+      
+      window.addEventListener("mousemove", (e) => {
+        gsap.to(cursor, {
+          x: e.clientX,
+          y: e.clientY,
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      });
+
+      const hoverElements = document.querySelectorAll("a, button, .project-card");
+      hoverElements.forEach((el) => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
+      });
+
+      // Scroll Progress Bar
+      gsap.to(".progress-bar", {
+        width: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.3
+        }
+      });
+
+      // Split text animation for About heading
+      const aboutHeading = document.querySelector("#about h2");
+      const headingText = aboutHeading.innerText;
+      aboutHeading.innerHTML = headingText.split(" ").map(word => 
+        `<span class="inline-block overflow-hidden"><span class="inline-block translate-y-full">${word}</span></span>`
+      ).join(" ");
+
+      gsap.to("#about h2 span span", {
+        y: 0,
+        stagger: 0.05,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 60%"
+        }
+      });
+
+      // Mobile Menu Animation Logic
+      const menuToggle = document.getElementById("menu-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuLinks = document.querySelectorAll(".mobile-menu-link");
+
+      const menuTl = gsap.timeline({ paused: true });
+
+      menuTl.to(mobileMenu, {
+        display: "flex",
+        duration: 0
+      })
+      .fromTo(mobileMenu, 
+        { clipPath: "circle(0% at 90% 10%)" },
+        { clipPath: "circle(150% at 90% 10%)", duration: 0.8, ease: "power3.inOut" }
+      )
+      .to(menuLinks, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "power2.out"
+      }, "-=0.4");
+
+      menuToggle.addEventListener("click", () => {
+        menuTl.play();
+        lenis.stop(); // Stop scrolling when menu is open
+      });
+
+      closeMenu.addEventListener("click", () => {
+        menuTl.reverse();
+        lenis.start(); // Resume scrolling when menu is closed
+      });
+
+      menuLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          menuTl.reverse();
+          lenis.start();
+        });
+      });
+
+      // Magnetic Button effect
+      const magneticBtns = document.querySelectorAll(".group.inline-flex, .magnetic-target");
+      magneticBtns.forEach(btn => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          gsap.to(btn, {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+          
+          const inner = btn.querySelector("span");
+          if (inner) {
+            gsap.to(inner, {
+              x: x * 0.5,
+              y: y * 0.5,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          }
+        });
+        
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            ease: "elastic.out(1, 0.3)"
+          });
+          
+          const inner = btn.querySelector("span");
+          if (inner) {
+            gsap.to(inner, {
+              x: 0,
+              y: 0,
+              duration: 0.5,
+              ease: "elastic.out(1, 0.3)"
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

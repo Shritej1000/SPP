@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Shritej Patil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .noise-overlay {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #1C1D20;
+    }
+
+    html.lenis {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 20px;
+      height: 20px;
+      background: #E1E0CC;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.1s ease;
+    }
+
+    .cursor-hover {
+      transform: scale(4);
+    }
+
+    /* Form Styling */
+    .form-group {
+      border-top: 1px solid rgba(225, 224, 204, 0.1);
+      padding: 3rem 0;
+      position: relative;
+    }
+
+    .form-number {
+      font-size: 0.7rem;
+      color: rgba(225, 224, 204, 0.3);
+      position: absolute;
+      top: 3.2rem;
+      left: 0;
+    }
+
+    .form-label {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      color: #E1E0CC;
+      margin-left: 3rem;
+      display: block;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .form-input {
+      background: transparent;
+      border: none;
+      width: calc(100% - 3rem);
+      margin-left: 3rem;
+      font-size: 1.2rem;
+      color: rgba(225, 224, 204, 0.8);
+      padding: 0.5rem 0;
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: rgba(225, 224, 204, 0.2);
+    }
+
+    /* Sidebar Styling */
+    .sidebar-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(225, 224, 204, 0.3);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .sidebar-value {
+      font-size: 1.1rem;
+      color: #E1E0CC;
+      margin-bottom: 2.5rem;
+      display: block;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar-value:hover {
+      opacity: 0.6;
+    }
+
+    .send-btn {
+      width: 180px;
+      height: 180px;
+      background: #FF4646;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 4rem;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (min-width: 1024px) {
+      .send-btn {
+        position: absolute;
+        bottom: -90px;
+        right: 10%;
+        left: auto;
+        transform: none;
+      }
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: #111;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      padding: 2rem;
+      color: #E1E0CC;
+    }
+
+    .mobile-menu-link {
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .close-menu-btn {
+      width: 60px;
+      height: 60px;
+      background: #FF4646;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .mobile-toggle .dot {
+      width: 8px;
+      height: 8px;
+      background: #E1E0CC;
+      border-radius: 50%;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: #E1E0CC;
+      z-index: 100;
+    }
+
+    .footer-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(225, 224, 204, 0.3);
+    }
+
+    .footer-value {
+      font-size: 0.9rem;
+      color: #E1E0CC;
+    }
+    
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background-color: #FF4646;
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-loader {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 6px;
+      column-gap: 6px;
+      animation: circleRotate 10s linear infinite;
+    }
+
+    .circle-loader .circle {
+      background-color: white;
+      animation: circleScaleDelay 1.3s infinite ease-in-out;
+      border-radius: 50%;
+    }
+
+    .circle-loader .circle1 { animation-delay: 0.2s; }
+    .circle-loader .circle2 { animation-delay: 0.3s; }
+    .circle-loader .circle3 { animation-delay: 0.4s; }
+    .circle-loader .circle4 { animation-delay: 0.1s; }
+    .circle-loader .circle5 { animation-delay: 0.2s; }
+    .circle-loader .circle6 { animation-delay: 0.3s; }
+    .circle-loader .circle7 { animation-delay: 0s; }
+    .circle-loader .circle8 { animation-delay: 0.1s; }
+    .circle-loader .circle9 { animation-delay: 0.2s; }
+
+    @keyframes circleScaleDelay {
+      0%, 70%, 100% { transform: scale3D(1, 1, 1); }
+      35% { transform: scale3D(0, 0, 1); }
+    }
+
+    @keyframes circleRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .circle-loader {
+        width: 60px;
+        height: 60px;
+        row-gap: 4px;
+        column-gap: 4px;
+      }
+    }
+    .send-btn:disabled {
+      background: #333;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .success-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #FF4646;
+      padding: 4rem;
+      border-radius: 2rem;
+      text-align: center;
+      z-index: 200;
+      display: none;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body class="m-0 p-0 overflow-x-hidden text-[#E1E0CC]">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="circle-loader">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+      <div class="circle circle5"></div>
+      <div class="circle circle6"></div>
+      <div class="circle circle7"></div>
+      <div class="circle circle8"></div>
+      <div class="circle circle9"></div>
+    </div>
+  </div>
+
+  <div class="custom-cursor hidden md:block"></div>
+  <div class="progress-bar"></div>
+
+  <!-- Success Message Overlay -->
+  <div class="success-message" id="success-message">
+    <h2 class="text-4xl font-medium mb-4">Message Sent!</h2>
+    <p class="text-white/70">I'll get back to you as soon as possible.</p>
+    <button onclick="closeSuccess()" class="mt-8 px-6 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">Close</button>
+  </div>
+
+  <!-- Smooth scroll wrapper -->
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <!-- Header -->
+      <nav class="fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="index.html" class="text-xl font-medium tracking-tighter">Shritej Patil</a>
+        <div class="mobile-toggle" id="menu-toggle">
+          <div class="dot bg-[#E1E0CC] w-2 h-2 rounded-full"></div>
+          <span class="text-[10px] uppercase tracking-widest">Menu</span>
+        </div>
+      </nav>
+
+      <!-- Contact Hero -->
+      <section class="pt-40 pb-20 px-6 md:px-12">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">
+          <!-- Main Content -->
+          <div class="lg:col-span-8">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[0.9] mb-32 reveal">
+              Let's start a<br>project together
+            </h1>
+
+            <form id="contact-form" action="https://formspree.io/f/xoqgzpzk" method="POST" class="reveal">
+              <!-- Field 1 -->
+              <div class="form-group">
+                <span class="form-number">01</span>
+                <label class="form-label">What's your name?</label>
+                <input type="text" name="name" class="form-input" placeholder="John Doe *" required>
+              </div>
+
+              <!-- Field 2 -->
+              <div class="form-group">
+                <span class="form-number">02</span>
+                <label class="form-label">What's your email?</label>
+                <input type="email" name="email" class="form-input" placeholder="john@doe.com *" required>
+              </div>
+
+              <!-- Field 3 -->
+              <div class="form-group">
+                <span class="form-number">03</span>
+                <label class="form-label">What's the name of your organization?</label>
+                <input type="text" name="organization" class="form-input" placeholder="John & Doe ®">
+              </div>
+
+              <!-- Field 4 -->
+              <div class="form-group">
+                <span class="form-number">04</span>
+                <label class="form-label">What services are you looking for?</label>
+                <input type="text" name="services" class="form-input" placeholder="Web Design, Web Development ...">
+              </div>
+
+              <!-- Field 5 -->
+              <div class="form-group border-b border-white/10">
+                <span class="form-number">05</span>
+                <label class="form-label">Your message</label>
+                <textarea name="message" class="form-input h-32 resize-none" placeholder="Hello Shritej, can you help me with ... *" required></textarea>
+              </div>
+
+              <div class="relative h-40">
+                <button type="submit" id="submit-btn" class="send-btn magnetic-target">
+                  <span id="btn-text">Send it</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="lg:col-span-4 lg:pt-32">
+            <div class="reveal" style="transition-delay: 0.2s;">
+              <div class="mb-20 flex justify-center lg:justify-start">
+                <div class="w-24 h-24 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+                  <img src="Hero-1.png" alt="Shritej" class="w-full h-full object-cover">
+                </div>
+              </div>
+
+              <div class="mb-12">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <div>
+                <span class="sidebar-label">Contact Details</span>
+                <a href="mailto:shritejpatil2806@gmail.com" class="sidebar-value">shritejpatil2806@gmail.com</a>
+                <a href="tel:+910000000000" class="sidebar-value">+91 000 000 0000</a>
+              </div>
+
+              <div class="mt-16">
+                <span class="sidebar-label">Business Details</span>
+                <p class="sidebar-value">
+                  Shritej Patil Design B.V.<br>
+                  Maharashtra, India
+                </p>
+              </div>
+
+              <div class="mt-16">
+                <span class="sidebar-label">Socials</span>
+                <div class="flex flex-col gap-2">
+                  <a href="#" class="sidebar-value mb-0">Awwwards</a>
+                  <a href="#" class="sidebar-value mb-0">Instagram</a>
+                  <a href="#" class="sidebar-value mb-0">Twitter</a>
+                  <a href="#" class="sidebar-value mb-0">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Simple Footer -->
+      <footer class="py-10 px-6 md:px-12 border-t border-white/10 mt-40">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div class="flex gap-12">
+            <div>
+              <p class="footer-label">Version</p>
+              <p class="footer-value">2024 © Edition</p>
+            </div>
+            <div>
+              <p class="footer-label">Local Time</p>
+              <p class="footer-value" id="local-time">00:00 PM GMT+0</p>
+            </div>
+          </div>
+
+          <div class="flex gap-8">
+            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Awwwards</a>
+            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Instagram</a>
+            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Twitter</a>
+            <a href="#" class="footer-value hover:opacity-50 transition-opacity">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <div class="close-menu-btn" id="close-menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mt-20">
+      <p class="text-[10px] uppercase tracking-widest text-white/40 mb-10 border-b border-white/10 pb-4">Navigation</p>
+      <div class="flex flex-col gap-6">
+        <a href="index.html" class="mobile-menu-link">Home</a>
+        <a href="work.html" class="mobile-menu-link">Work</a>
+        <a href="index.html#about" class="mobile-menu-link">About</a>
+        <a href="contact.html" class="mobile-menu-link">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Preloader Animation
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        const tl = gsap.timeline({
+          onComplete: () => {
+            preloader.style.display = "none";
+            lenis.start();
+          }
+        });
+
+        tl.to(preloader, {
+          yPercent: -100,
+          duration: 1.2,
+          ease: "power4.inOut",
+          delay: 1.0 // Keep loader visible for a moment
+        });
+      });
+
+      // Stop scrolling during preload
+      lenis.stop();
+
+      // Local Time
+      function updateTime() {
+        const timeElement = document.getElementById("local-time");
+        if (timeElement) {
+          const now = new Date();
+          const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
+          timeElement.textContent = now.toLocaleTimeString('en-US', options);
+        }
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      // Custom Cursor
+      const cursor = document.querySelector(".custom-cursor");
+      window.addEventListener("mousemove", (e) => {
+        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power2.out" });
+      });
+
+      // Scroll reveals
+      const reveals = document.querySelectorAll(".reveal");
+      reveals.forEach((el) => {
+        gsap.fromTo(el, { y: 60, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 90%" }
+        });
+      });
+
+      // Mobile Menu
+      const menuToggle = document.getElementById("menu-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuLinks = document.querySelectorAll(".mobile-menu-link");
+      const menuTl = gsap.timeline({ paused: true });
+
+      menuTl.to(mobileMenu, { display: "flex", duration: 0 })
+        .fromTo(mobileMenu, { clipPath: "circle(0% at 90% 10%)" }, { clipPath: "circle(150% at 90% 10%)", duration: 0.8, ease: "power3.inOut" })
+        .to(menuLinks, { opacity: 1, y: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" }, "-=0.4");
+
+      menuToggle.addEventListener("click", () => { menuTl.play(); lenis.stop(); });
+      closeMenu.addEventListener("click", () => { menuTl.reverse(); lenis.start(); });
+
+      // Magnetic
+      const magneticBtns = document.querySelectorAll(".magnetic-target");
+      magneticBtns.forEach(btn => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+          const inner = btn.querySelector("span");
+          if (inner) gsap.to(inner, { x: x * 0.5, y: y * 0.5, duration: 0.3, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+          const inner = btn.querySelector("span");
+          if (inner) gsap.to(inner, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+
+      // Progress Bar
+      gsap.to(".progress-bar", {
+        width: "100%", ease: "none",
+        scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 0.3 }
+      });
+
+      // Form Submission Logic
+      const contactForm = document.getElementById("contact-form");
+      const submitBtn = document.getElementById("submit-btn");
+      const btnText = document.getElementById("btn-text");
+      const successOverlay = document.getElementById("success-message");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          
+          // Loading state
+          submitBtn.disabled = true;
+          btnText.textContent = "Sending...";
+          gsap.to(submitBtn, { scale: 0.9, duration: 0.2 });
+
+          const formData = new FormData(contactForm);
+          
+          try {
+            const response = await fetch(contactForm.action, {
+              method: "POST",
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+
+            if (response.ok) {
+              // Success
+              showSuccess();
+              contactForm.reset();
+            } else {
+              // Error
+              alert("Oops! There was a problem submitting your form. Please try again.");
+            }
+          } catch (error) {
+            alert("Oops! There was a problem submitting your form. Please try again.");
+          } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = "Send it";
+            gsap.to(submitBtn, { scale: 1, duration: 0.2 });
+          }
+        });
+      }
+    });
+
+    function showSuccess() {
+      const successOverlay = document.getElementById("success-message");
+      successOverlay.style.display = "block";
+      gsap.to(successOverlay, { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.6, 
+        ease: "power3.out" 
+      });
+      lenis.stop(); // Stop scrolling
+    }
+
+    function closeSuccess() {
+      const successOverlay = document.getElementById("success-message");
+      gsap.to(successOverlay, { 
+        opacity: 0, 
+        y: 20, 
+        duration: 0.4, 
+        ease: "power3.in",
+        onComplete: () => {
+          successOverlay.style.display = "none";
+          lenis.start(); // Resume scrolling
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
