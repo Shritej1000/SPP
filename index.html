@@ -5,6 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shritej - Web Designer </title>
+  <link rel="icon" type="image/png" href="site.png">
+  <meta name="description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta name="keywords" content="Shritej Patil, Web Designer, Web Developer, Freelance, GSAP, React, Framer, Digital Design, UI/UX">
+  <meta name="author" content="Shritej Patil">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shritejpatil.vercel.app/">
+  <meta property="og:title" content="Shritej - Web Designer">
+  <meta property="og:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="og:image" content="https://shritejpatil.vercel.app/site.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://shritejpatil.vercel.app/">
+  <meta property="twitter:title" content="Shritej - Web Designer">
+  <meta property="twitter:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="twitter:image" content="https://shritejpatil.vercel.app/site.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -634,9 +648,9 @@
               <path d="M7 7L17 17M17 17V7M17 17H7" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
-            <div class="hero-info-text">
+            <h1 class="hero-info-text">
               Freelance<br>Designer & Developer
-            </div>
+            </h1>
           </div>
 
           <!-- Hero Content (Marquee) -->
@@ -729,8 +743,21 @@
         <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div class="lg:col-span-8">
             <h2 class="text-4xl font-medium leading-tight tracking-tight md:text-7xl">
-              I believe that <span class="italic text-black/40">good design</span> is invisible, yet its impact is felt
-              in every interaction.
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">I</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">believe</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">that</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em] italic text-black/40">good</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em] italic text-black/40">design</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">is</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">invisible,</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">yet</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">its</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">impact</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">is</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">felt</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">in</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">every</span></span>
+              <span class="inline-block overflow-hidden -mb-[0.2em] pr-[0.15em] -mr-[0.15em]"><span class="inline-block translate-y-[110%] pb-[0.2em]">interaction.</span></span>
             </h2>
           </div>
           <div class="lg:col-span-4 flex flex-col justify-end">
@@ -1099,12 +1126,6 @@
       });
 
       // Split text animation for About heading
-      const aboutHeading = document.querySelector("#about h2");
-      const headingText = aboutHeading.innerText;
-      aboutHeading.innerHTML = headingText.split(" ").map(word =>
-        `<span class="inline-block overflow-hidden"><span class="inline-block translate-y-full">${word}</span></span>`
-      ).join(" ");
-
       gsap.to("#about h2 span span", {
         y: 0,
         stagger: 0.05,
@@ -1239,3 +1260,4 @@
 </body>
 
 </html>
+
