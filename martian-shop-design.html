@@ -513,14 +513,7 @@
             </a>
           </div>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            <div>
-              <p class="footer-bottom-label">Version</p>
-              <p class="footer-bottom-value">2024 © Edition</p>
-            </div>
-            <div>
-              <p class="footer-bottom-label">Local Time</p>
-              <p class="footer-bottom-value" id="local-time">00:00 PM GMT+0</p>
-            </div>
+
             <div class="col-span-2 md:col-span-2">
               <p class="footer-bottom-label">Socials</p>
               <div class="flex flex-wrap gap-6 mt-2">
@@ -571,17 +564,7 @@
     gsap.registerPlugin(ScrollTrigger);
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Local Time
-      function updateTime() {
-        const timeElement = document.getElementById("local-time");
-        if (timeElement) {
-          const now = new Date();
-          const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
-          timeElement.textContent = now.toLocaleTimeString('en-US', options);
-        }
-      }
-      setInterval(updateTime, 1000);
-      updateTime();
+
 
       // Custom Cursor
       const cursor = document.querySelector(".custom-cursor");

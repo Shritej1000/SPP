@@ -6,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work - Shritej Patil</title>
   <link rel="icon" type="image/png" href="site.png">
-  <meta name="description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
-  <meta name="keywords" content="Shritej Patil, Web Designer, Web Developer, Freelance, GSAP, React, Framer, Digital Design, UI/UX">
+  <meta name="description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta name="keywords"
+    content="Shritej Patil, Web Designer, Web Developer, Freelance, GSAP, React, Framer, Digital Design, UI/UX">
   <meta name="author" content="Shritej Patil">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shritejpatil.vercel.app/">
   <meta property="og:title" content="Work - Shritej Patil">
-  <meta property="og:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="og:description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
   <meta property="og:image" content="https://shritejpatil.vercel.app/site.png">
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://shritejpatil.vercel.app/">
   <meta property="twitter:title" content="Work - Shritej Patil">
-  <meta property="twitter:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="twitter:description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
   <meta property="twitter:image" content="https://shritejpatil.vercel.app/site.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -298,7 +302,7 @@
       font-size: 1rem;
       color: #E1E0CC;
     }
-    
+
     .archive-btn {
       background: #1A1A1A;
       color: #E1E0CC;
@@ -313,7 +317,7 @@
       background: #E1E0CC;
       color: black;
     }
-    
+
     /* Preloader Styles */
     #preloader {
       position: fixed;
@@ -355,24 +359,63 @@
       border-radius: 50%;
     }
 
-    .circle-loader .circle1 { animation-delay: 0.2s; }
-    .circle-loader .circle2 { animation-delay: 0.3s; }
-    .circle-loader .circle3 { animation-delay: 0.4s; }
-    .circle-loader .circle4 { animation-delay: 0.1s; }
-    .circle-loader .circle5 { animation-delay: 0.2s; }
-    .circle-loader .circle6 { animation-delay: 0.3s; }
-    .circle-loader .circle7 { animation-delay: 0s; }
-    .circle-loader .circle8 { animation-delay: 0.1s; }
-    .circle-loader .circle9 { animation-delay: 0.2s; }
+    .circle-loader .circle1 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle2 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle3 {
+      animation-delay: 0.4s;
+    }
+
+    .circle-loader .circle4 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle5 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle6 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle7 {
+      animation-delay: 0s;
+    }
+
+    .circle-loader .circle8 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle9 {
+      animation-delay: 0.2s;
+    }
 
     @keyframes circleScaleDelay {
-      0%, 70%, 100% { transform: scale3D(1, 1, 1); }
-      35% { transform: scale3D(0, 0, 1); }
+
+      0%,
+      70%,
+      100% {
+        transform: scale3D(1, 1, 1);
+      }
+
+      35% {
+        transform: scale3D(0, 0, 1);
+      }
     }
 
     @keyframes circleRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     @media (max-width: 768px) {
@@ -383,6 +426,7 @@
         column-gap: 4px;
       }
     }
+
     /* Premium Letter-Reveal Hover Animation */
     .btn-hover-reveal:not(.footer-circle-btn) {
       position: relative;
@@ -433,36 +477,125 @@
     }
 
     /* Staggered delay for each character — up to 20 chars */
-    .btn-hover-reveal .btn-char:nth-child(1) { transition-delay: 0.01s; }
-    .btn-hover-reveal .btn-char:nth-child(2) { transition-delay: 0.02s; }
-    .btn-hover-reveal .btn-char:nth-child(3) { transition-delay: 0.03s; }
-    .btn-hover-reveal .btn-char:nth-child(4) { transition-delay: 0.04s; }
-    .btn-hover-reveal .btn-char:nth-child(5) { transition-delay: 0.05s; }
-    .btn-hover-reveal .btn-char:nth-child(6) { transition-delay: 0.06s; }
-    .btn-hover-reveal .btn-char:nth-child(7) { transition-delay: 0.07s; }
-    .btn-hover-reveal .btn-char:nth-child(8) { transition-delay: 0.08s; }
-    .btn-hover-reveal .btn-char:nth-child(9) { transition-delay: 0.09s; }
-    .btn-hover-reveal .btn-char:nth-child(10) { transition-delay: 0.10s; }
-    .btn-hover-reveal .btn-char:nth-child(11) { transition-delay: 0.11s; }
-    .btn-hover-reveal .btn-char:nth-child(12) { transition-delay: 0.12s; }
-    .btn-hover-reveal .btn-char:nth-child(13) { transition-delay: 0.13s; }
-    .btn-hover-reveal .btn-char:nth-child(14) { transition-delay: 0.14s; }
-    .btn-hover-reveal .btn-char:nth-child(15) { transition-delay: 0.15s; }
-    .btn-hover-reveal .btn-char:nth-child(16) { transition-delay: 0.16s; }
-    .btn-hover-reveal .btn-char:nth-child(17) { transition-delay: 0.17s; }
-    .btn-hover-reveal .btn-char:nth-child(18) { transition-delay: 0.18s; }
-    .btn-hover-reveal .btn-char:nth-child(19) { transition-delay: 0.19s; }
-    .btn-hover-reveal .btn-char:nth-child(20) { transition-delay: 0.20s; }
-    .btn-hover-reveal .btn-char:nth-child(21) { transition-delay: 0.21s; }
-    .btn-hover-reveal .btn-char:nth-child(22) { transition-delay: 0.22s; }
-    .btn-hover-reveal .btn-char:nth-child(23) { transition-delay: 0.23s; }
-    .btn-hover-reveal .btn-char:nth-child(24) { transition-delay: 0.24s; }
-    .btn-hover-reveal .btn-char:nth-child(25) { transition-delay: 0.25s; }
-    .btn-hover-reveal .btn-char:nth-child(26) { transition-delay: 0.26s; }
-    .btn-hover-reveal .btn-char:nth-child(27) { transition-delay: 0.27s; }
-    .btn-hover-reveal .btn-char:nth-child(28) { transition-delay: 0.28s; }
-    .btn-hover-reveal .btn-char:nth-child(29) { transition-delay: 0.29s; }
-    .btn-hover-reveal .btn-char:nth-child(30) { transition-delay: 0.30s; }
+    .btn-hover-reveal .btn-char:nth-child(1) {
+      transition-delay: 0.01s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(2) {
+      transition-delay: 0.02s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(3) {
+      transition-delay: 0.03s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(4) {
+      transition-delay: 0.04s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(5) {
+      transition-delay: 0.05s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(6) {
+      transition-delay: 0.06s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(7) {
+      transition-delay: 0.07s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(8) {
+      transition-delay: 0.08s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(9) {
+      transition-delay: 0.09s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(10) {
+      transition-delay: 0.10s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(11) {
+      transition-delay: 0.11s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(12) {
+      transition-delay: 0.12s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(13) {
+      transition-delay: 0.13s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(14) {
+      transition-delay: 0.14s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(15) {
+      transition-delay: 0.15s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(16) {
+      transition-delay: 0.16s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(17) {
+      transition-delay: 0.17s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(18) {
+      transition-delay: 0.18s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(19) {
+      transition-delay: 0.19s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(20) {
+      transition-delay: 0.20s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(21) {
+      transition-delay: 0.21s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(22) {
+      transition-delay: 0.22s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(23) {
+      transition-delay: 0.23s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(24) {
+      transition-delay: 0.24s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(25) {
+      transition-delay: 0.25s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(26) {
+      transition-delay: 0.26s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(27) {
+      transition-delay: 0.27s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(28) {
+      transition-delay: 0.28s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(29) {
+      transition-delay: 0.29s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(30) {
+      transition-delay: 0.30s;
+    }
   </style>
 </head>
 
@@ -505,14 +638,15 @@
       <section class="pt-40 pb-20 px-6 md:px-12">
         <div class="max-w-[1400px] mx-auto">
           <h1 class="work-hero-title mb-20 reveal max-w-[900px]">Creating next level<br>digital products</h1>
-          
+
           <div class="flex flex-wrap items-center justify-between gap-8 reveal">
             <div class="flex flex-wrap gap-3">
               <button class="filter-btn active btn-hover-reveal" data-hover-text="All">All</button>
               <button class="filter-btn btn-hover-reveal" data-hover-text="Design">Design <sup>3</sup></button>
-              <button class="filter-btn btn-hover-reveal" data-hover-text="Development">Development <sup>1</sup></button>
+              <button class="filter-btn btn-hover-reveal" data-hover-text="Development">Development
+                <sup>1</sup></button>
             </div>
-            
+
             <div class="flex gap-2">
               <button class="view-toggle-btn active">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -551,7 +685,8 @@
           <!-- List Items -->
           <div class="flex flex-col">
             <!-- Project 0 -->
-            <a href="arc.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Arc1.png">
+            <a href="arc.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal"
+              data-image="Arc1.png">
               <div class="col-span-5">
                 <h3 class="work-list-name">Arc Architecture</h3>
               </div>
@@ -563,8 +698,9 @@
                 <span>Website Design</span>
                 <span>2024</span>
               </div>
-            </a>            <!-- Project 1 -->
-            <a href="manda.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Manda-main.png">
+            </a> <!-- Project 1 -->
+            <a href="manda.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal"
+              data-image="Manda-main.png">
               <div class="col-span-5">
                 <h3 class="work-list-name">Manda Branding</h3>
               </div>
@@ -579,7 +715,8 @@
             </a>
 
             <!-- Project 2 -->
-            <a href="martian-shop-design.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Main.png">
+            <a href="martian-shop-design.html"
+              class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Main.png">
               <div class="col-span-5">
                 <h3 class="work-list-name">Martian — Shop Design</h3>
               </div>
@@ -593,7 +730,8 @@
             </a>
 
             <!-- Project 3 -->
-            <a href="mars-design.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Hero-1.png">
+            <a href="mars-design.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal"
+              data-image="Hero-1.png">
               <div class="col-span-5">
                 <h3 class="work-list-name">Mars Designs</h3>
               </div>
@@ -607,7 +745,9 @@
             </a>
 
             <!-- Project 4 -->
-            <a href="hero-section-design.html" class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal" data-image="Hero-Section 13.png">
+            <a href="hero-section-design.html"
+              class="work-list-item grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal"
+              data-image="Hero-Section 13.png">
               <div class="col-span-5">
                 <h3 class="work-list-name">Hero section design</h3>
               </div>
@@ -623,7 +763,7 @@
 
           <!-- Bottom Button -->
           <div class="mt-20 flex justify-center reveal">
-            <button class="archive-btn btn-hover-reveal" data-hover-text="Archive">Archive <sup>4</sup></button>
+            <button class="archive-btn btn-hover-reveal" data-hover-text="Archive">Archive <sup>5</sup></button>
           </div>
         </div>
       </section>
@@ -640,33 +780,33 @@
               <h2 class="footer-heading">Let's work<br>together</h2>
               <div class="ml-auto hidden md:block">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 30L30 10M30 10H10M30 10V30" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 30L30 10M30 10H10M30 10V30" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </div>
             </div>
             <div class="flex flex-wrap gap-4 mt-12 justify-center md:justify-start">
-              <a href="mailto:shritejpatil2806@gmail.com" class="btn-hover-reveal footer-pill-btn" data-hover-text="shritejpatil2806@gmail.com">shritejpatil2806@gmail.com</a>
+              <a href="mailto:shritejpatil2806@gmail.com" class="btn-hover-reveal footer-pill-btn"
+                data-hover-text="shritejpatil2806@gmail.com">shritejpatil2806@gmail.com</a>
             </div>
-            <a href="contact.html" class="btn-hover-reveal footer-circle-btn magnetic-target" data-hover-text="Get in touch">
+            <a href="contact.html" class="btn-hover-reveal footer-circle-btn magnetic-target"
+              data-hover-text="Get in touch">
               <span>Get in touch</span>
             </a>
           </div>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            <div>
-              <p class="footer-bottom-label">Version</p>
-              <p class="footer-bottom-value">2024 © Edition</p>
-            </div>
-            <div>
-              <p class="footer-bottom-label">Local Time</p>
-              <p class="footer-bottom-value" id="local-time">00:00 PM GMT+0</p>
-            </div>
+
             <div class="col-span-2 md:col-span-2">
               <p class="footer-bottom-label">Socials</p>
               <div class="flex flex-wrap gap-6 mt-2">
-                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Awwwards">Awwwards</a>
-                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Instagram">Instagram</a>
-                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Twitter">Twitter</a>
-                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="LinkedIn">LinkedIn</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors"
+                  data-hover-text="Awwwards">Awwwards</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors"
+                  data-hover-text="Instagram">Instagram</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors"
+                  data-hover-text="Twitter">Twitter</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors"
+                  data-hover-text="LinkedIn">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -678,7 +818,8 @@
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay" id="mobile-menu">
     <div class="close-menu-btn" id="close-menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
@@ -700,19 +841,39 @@
       <p class="text-[10px] uppercase tracking-widest text-white/40 mb-6">Socials</p>
       <div class="flex flex-wrap gap-6 text-sm">
         <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
           <span class="btn-hover-reveal" data-hover-text="Awwwards">Awwwards</span>
         </a>
         <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
           <span class="btn-hover-reveal" data-hover-text="Instagram">Instagram</span>
         </a>
         <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+            </path>
+          </svg>
           <span class="btn-hover-reveal" data-hover-text="Twitter">Twitter</span>
         </a>
         <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
           <span class="btn-hover-reveal" data-hover-text="LinkedIn">LinkedIn</span>
         </a>
       </div>
@@ -747,33 +908,23 @@
           duration: 0.6,
           ease: "power3.out"
         })
-        .to(loaderText, {
-          opacity: 0,
-          duration: 0.4,
-          delay: 0.6,
-          ease: "power2.in"
-        })
-        .to(preloader, {
-          yPercent: -100,
-          duration: 1.2,
-          ease: "power4.inOut"
-        }, "-=0.2");
+          .to(loaderText, {
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.6,
+            ease: "power2.in"
+          })
+          .to(preloader, {
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut"
+          }, "-=0.2");
       });
 
       // Stop scrolling during preload
       lenis.stop();
 
-      // Local Time
-      function updateTime() {
-        const timeElement = document.getElementById("local-time");
-        if (timeElement) {
-          const now = new Date();
-          const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
-          timeElement.textContent = now.toLocaleTimeString('en-US', options);
-        }
-      }
-      setInterval(updateTime, 1000);
-      updateTime();
+
 
       // Custom Cursor
       const cursor = document.querySelector(".custom-cursor");
@@ -922,5 +1073,3 @@
 </body>
 
 </html>
-
-

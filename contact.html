@@ -6,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Shritej Patil</title>
   <link rel="icon" type="image/png" href="site.png">
-  <meta name="description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
-  <meta name="keywords" content="Shritej Patil, Web Designer, Web Developer, Freelance, GSAP, React, Framer, Digital Design, UI/UX">
+  <meta name="description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta name="keywords"
+    content="Shritej Patil, Web Designer, Web Developer, Freelance, GSAP, React, Framer, Digital Design, UI/UX">
   <meta name="author" content="Shritej Patil">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shritejpatil.vercel.app/">
   <meta property="og:title" content="Contact - Shritej Patil">
-  <meta property="og:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="og:description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
   <meta property="og:image" content="https://shritejpatil.vercel.app/site.png">
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://shritejpatil.vercel.app/">
   <meta property="twitter:title" content="Contact - Shritej Patil">
-  <meta property="twitter:description" content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
+  <meta property="twitter:description"
+    content="Shritej Patil is a freelance Web Designer and Developer creating high-end, premium digital experiences with stunning animations and modern layouts.">
   <meta property="twitter:image" content="https://shritejpatil.vercel.app/site.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -681,27 +685,19 @@
 
       <!-- Simple Footer -->
       <footer class="py-10 px-6 md:px-12 border-t border-white/10 mt-40">
-        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div class="flex gap-12">
-            <div>
-              <p class="footer-label">Version</p>
-              <p class="footer-value">2024 © Edition</p>
+        <div class="max-w-[1400px] mx-auto">
+          <div class="flex flex-col gap-2">
+            <p class="footer-label">Socials</p>
+            <div class="flex flex-wrap gap-8">
+              <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+                data-hover-text="Awwwards">Awwwards</a>
+              <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+                data-hover-text="Instagram">Instagram</a>
+              <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+                data-hover-text="Twitter">Twitter</a>
+              <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+                data-hover-text="LinkedIn">LinkedIn</a>
             </div>
-            <div>
-              <p class="footer-label">Local Time</p>
-              <p class="footer-value" id="local-time">00:00 PM GMT+0</p>
-            </div>
-          </div>
-
-          <div class="flex gap-8">
-            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
-              data-hover-text="Awwwards">Awwwards</a>
-            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
-              data-hover-text="Instagram">Instagram</a>
-            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
-              data-hover-text="Twitter">Twitter</a>
-            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
-              data-hover-text="LinkedIn">LinkedIn</a>
           </div>
         </div>
       </footer>
@@ -816,18 +812,6 @@
 
       // Stop scrolling during preload
       lenis.stop();
-
-      // Local Time
-      function updateTime() {
-        const timeElement = document.getElementById("local-time");
-        if (timeElement) {
-          const now = new Date();
-          const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
-          timeElement.textContent = now.toLocaleTimeString('en-US', options);
-        }
-      }
-      setInterval(updateTime, 1000);
-      updateTime();
 
       // Custom Cursor
       const cursor = document.querySelector(".custom-cursor");
@@ -991,4 +975,3 @@
 </body>
 
 </html>
-
