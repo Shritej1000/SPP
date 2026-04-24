@@ -893,7 +893,11 @@
 
   <script>
     // Initialize Lenis
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      smoothTouch: true
+    });
 
     function raf(time) {
       lenis.raf(time);
@@ -913,8 +917,11 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       // Preloader Animation
-      window.addEventListener("load", () => {
+      const startPreloader = () => {
         const preloader = document.getElementById("preloader");
+        if (!preloader || preloader.dataset.loaded) return;
+        preloader.dataset.loaded = "true";
+
         const tl = gsap.timeline({
           onComplete: () => {
             preloader.style.display = "none";
@@ -924,9 +931,9 @@
 
         tl.to(preloader, {
           yPercent: -100,
-          duration: 1.2,
+          duration: 0.8,
           ease: "power4.inOut",
-          delay: 1.5 // Keep loader visible for a moment
+          delay: 0 
         })
           .to(".hero-info-box", {
             opacity: 1,
@@ -940,7 +947,10 @@
             duration: 1.5,
             ease: "power4.out"
           }, "-=0.8");
-      });
+      };
+
+      // Guarantee the preloader disappears around 1s
+      setTimeout(startPreloader, 1000);
 
       // Stop scrolling during preload
       lenis.stop();
