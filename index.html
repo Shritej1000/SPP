@@ -255,7 +255,8 @@
       height: 180px;
       background: #FF4646;
       border-radius: 50%;
-      display: none; /* Hidden on mobile */
+      display: none;
+      /* Hidden on mobile */
       align-items: center;
       justify-content: center;
       color: white;
@@ -352,11 +353,12 @@
     }
 
     .marquee-text {
-      font-size: clamp(8rem, 24vw, 20rem);
+      font-size: clamp(6rem, 15vw, 14rem);
       font-weight: 500;
       color: #E1E0CC;
       letter-spacing: -0.05em;
-      line-height: 0.85;
+      line-height: 1.1;
+      padding-bottom: 0.1em; /* prevents j descender from getting cropped */
       padding-right: 0.1em;
     }
 
@@ -415,24 +417,63 @@
       border-radius: 50%;
     }
 
-    .circle-loader .circle1 { animation-delay: 0.2s; }
-    .circle-loader .circle2 { animation-delay: 0.3s; }
-    .circle-loader .circle3 { animation-delay: 0.4s; }
-    .circle-loader .circle4 { animation-delay: 0.1s; }
-    .circle-loader .circle5 { animation-delay: 0.2s; }
-    .circle-loader .circle6 { animation-delay: 0.3s; }
-    .circle-loader .circle7 { animation-delay: 0s; }
-    .circle-loader .circle8 { animation-delay: 0.1s; }
-    .circle-loader .circle9 { animation-delay: 0.2s; }
+    .circle-loader .circle1 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle2 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle3 {
+      animation-delay: 0.4s;
+    }
+
+    .circle-loader .circle4 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle5 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle6 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle7 {
+      animation-delay: 0s;
+    }
+
+    .circle-loader .circle8 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle9 {
+      animation-delay: 0.2s;
+    }
 
     @keyframes circleScaleDelay {
-      0%, 70%, 100% { transform: scale3D(1, 1, 1); }
-      35% { transform: scale3D(0, 0, 1); }
+
+      0%,
+      70%,
+      100% {
+        transform: scale3D(1, 1, 1);
+      }
+
+      35% {
+        transform: scale3D(0, 0, 1);
+      }
     }
 
     @keyframes circleRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     @media (max-width: 768px) {
@@ -443,6 +484,87 @@
         column-gap: 4px;
       }
     }
+
+    /* Premium Letter-Reveal Hover Animation */
+    .btn-hover-reveal:not(.footer-circle-btn) {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-hover-reveal .btn-text-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-hover-reveal .btn-text-row {
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .btn-hover-reveal .btn-text-row .btn-char {
+      display: inline-block;
+      transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    /* Preserve spaces */
+    .btn-hover-reveal .btn-text-row .btn-char.is-space {
+      width: 0.3em;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row .btn-char {
+      transform: translateY(110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.original-row .btn-char {
+      transform: translateY(-110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.clone-row .btn-char {
+      transform: translateY(0%);
+    }
+
+    /* Staggered delay for each character — up to 20 chars */
+    .btn-hover-reveal .btn-char:nth-child(1) { transition-delay: 0.01s; }
+    .btn-hover-reveal .btn-char:nth-child(2) { transition-delay: 0.02s; }
+    .btn-hover-reveal .btn-char:nth-child(3) { transition-delay: 0.03s; }
+    .btn-hover-reveal .btn-char:nth-child(4) { transition-delay: 0.04s; }
+    .btn-hover-reveal .btn-char:nth-child(5) { transition-delay: 0.05s; }
+    .btn-hover-reveal .btn-char:nth-child(6) { transition-delay: 0.06s; }
+    .btn-hover-reveal .btn-char:nth-child(7) { transition-delay: 0.07s; }
+    .btn-hover-reveal .btn-char:nth-child(8) { transition-delay: 0.08s; }
+    .btn-hover-reveal .btn-char:nth-child(9) { transition-delay: 0.09s; }
+    .btn-hover-reveal .btn-char:nth-child(10) { transition-delay: 0.10s; }
+    .btn-hover-reveal .btn-char:nth-child(11) { transition-delay: 0.11s; }
+    .btn-hover-reveal .btn-char:nth-child(12) { transition-delay: 0.12s; }
+    .btn-hover-reveal .btn-char:nth-child(13) { transition-delay: 0.13s; }
+    .btn-hover-reveal .btn-char:nth-child(14) { transition-delay: 0.14s; }
+    .btn-hover-reveal .btn-char:nth-child(15) { transition-delay: 0.15s; }
+    .btn-hover-reveal .btn-char:nth-child(16) { transition-delay: 0.16s; }
+    .btn-hover-reveal .btn-char:nth-child(17) { transition-delay: 0.17s; }
+    .btn-hover-reveal .btn-char:nth-child(18) { transition-delay: 0.18s; }
+    .btn-hover-reveal .btn-char:nth-child(19) { transition-delay: 0.19s; }
+    .btn-hover-reveal .btn-char:nth-child(20) { transition-delay: 0.20s; }
+    .btn-hover-reveal .btn-char:nth-child(21) { transition-delay: 0.21s; }
+    .btn-hover-reveal .btn-char:nth-child(22) { transition-delay: 0.22s; }
+    .btn-hover-reveal .btn-char:nth-child(23) { transition-delay: 0.23s; }
+    .btn-hover-reveal .btn-char:nth-child(24) { transition-delay: 0.24s; }
+    .btn-hover-reveal .btn-char:nth-child(25) { transition-delay: 0.25s; }
+    .btn-hover-reveal .btn-char:nth-child(26) { transition-delay: 0.26s; }
+    .btn-hover-reveal .btn-char:nth-child(27) { transition-delay: 0.27s; }
+    .btn-hover-reveal .btn-char:nth-child(28) { transition-delay: 0.28s; }
+    .btn-hover-reveal .btn-char:nth-child(29) { transition-delay: 0.29s; }
+    .btn-hover-reveal .btn-char:nth-child(30) { transition-delay: 0.30s; }
   </style>
 </head>
 
@@ -474,7 +596,8 @@
       <section class="h-screen w-full p-2 md:p-4">
         <div class="relative h-full w-full overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem]">
           <!-- Background Video -->
-          <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover" src="hero.mp4"></video>
+          <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover"
+            src="hero.mp4"></video>
 
           <!-- Noise overlay -->
           <div class="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay"></div>
@@ -490,13 +613,13 @@
               <!-- Desktop Menu -->
               <div class="hidden md:flex items-center gap-6 md:gap-12 lg:gap-14">
                 <a href="work.html"
-                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">Works</a>
+                  class="btn-hover-reveal text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors" data-hover-text="Works">Works</a>
                 <a href="#about"
-                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">About</a>
+                  class="btn-hover-reveal text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors" data-hover-text="About">About</a>
                 <a href="contact.html"
-                  class="text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors">Contact</a>
+                  class="btn-hover-reveal text-xs md:text-sm text-[#E1E0CC]/80 hover:text-[#E1E0CC] transition-colors" data-hover-text="Contact">Contact</a>
               </div>
-              
+
               <!-- Mobile Menu Toggle -->
               <div class="mobile-toggle md:hidden" id="menu-toggle">
                 <span class="dot"></span>
@@ -508,7 +631,8 @@
           <!-- Hero Info Box -->
           <div class="hero-info-box">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 7L17 17M17 17V7M17 17H7" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 7L17 17M17 17V7M17 17H7" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
             <div class="hero-info-text">
               Freelance<br>Designer & Developer
@@ -542,19 +666,22 @@
           </a>
 
           <!-- Project 2 -->
-          <a href="digital-ecosystem.html" class="work-item group flex items-center justify-between" data-image="Main.png">
+          <a href="digital-ecosystem.html" class="work-item group flex items-center justify-between"
+            data-image="Main.png">
             <h3 class="work-item-title">Martian — Shop Design</h3>
             <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Strategy & UX</p>
           </a>
 
           <!-- Project 3 -->
-          <a href="minimal-portfolio.html" class="work-item group flex items-center justify-between" data-image="Hero-1.png">
+          <a href="minimal-portfolio.html" class="work-item group flex items-center justify-between"
+            data-image="Hero-1.png">
             <h3 class="work-item-title">Mars Designs</h3>
             <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Development</p>
           </a>
 
           <!-- Project 4 -->
-          <a href="creative-direction.html" class="work-item group flex items-center justify-between" data-image="Hero-Section 13.png">
+          <a href="creative-direction.html" class="work-item group flex items-center justify-between"
+            data-image="Hero-Section 13.png">
             <h3 class="work-item-title">Creative Direction</h3>
             <p class="text-sm text-white/50 uppercase tracking-widest md:text-base">Branding & Motion</p>
           </a>
@@ -590,7 +717,8 @@
         </div>
 
         <div class="mt-20 flex justify-center">
-          <a href="work.html" class="group inline-flex items-center gap-2 rounded-full border border-white/20 px-10 py-5 text-sm font-medium uppercase tracking-widest transition-all hover:bg-[#E1E0CC] hover:text-black hover:border-[#E1E0CC]">
+          <a href="work.html"
+            class="btn-hover-reveal group inline-flex items-center gap-2 rounded-full border border-white/20 px-10 py-5 text-sm font-medium uppercase tracking-widest transition-all hover:bg-[#E1E0CC] hover:text-black hover:border-[#E1E0CC]" data-hover-text="More work">
             More work <sup>4</sup>
           </a>
         </div>
@@ -601,12 +729,14 @@
         <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div class="lg:col-span-8">
             <h2 class="text-4xl font-medium leading-tight tracking-tight md:text-7xl">
-              I believe that <span class="italic text-black/40">good design</span> is invisible, yet its impact is felt in every interaction.
+              I believe that <span class="italic text-black/40">good design</span> is invisible, yet its impact is felt
+              in every interaction.
             </h2>
           </div>
           <div class="lg:col-span-4 flex flex-col justify-end">
             <p class="text-lg leading-relaxed text-black/70 md:text-xl">
-              Based in the intersection of creativity and logic, I help brands build digital products that resonate with their audience and drive meaningful growth.
+              Based in the intersection of creativity and logic, I help brands build digital products that resonate with
+              their audience and drive meaningful growth.
             </p>
             <div class="mt-8 flex gap-4">
               <div class="h-12 w-12 rounded-full border border-black/10 flex items-center justify-center">
@@ -644,19 +774,20 @@
               <h2 class="footer-heading">Let's work<br>together</h2>
               <div class="ml-auto hidden md:block">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 30L30 10M30 10H10M30 10V30" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 30L30 10M30 10H10M30 10V30" stroke="#E1E0CC" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </div>
             </div>
 
             <div class="flex flex-wrap gap-4 mt-12 justify-center md:justify-start">
-              <a href="mailto:shritejpatil2806@gmail.com" class="footer-pill-btn">
+              <a href="mailto:shritejpatil2806@gmail.com" class="btn-hover-reveal footer-pill-btn" data-hover-text="shritejpatil2806@gmail.com">
                 shritejpatil2806@gmail.com
               </a>
             </div>
 
             <!-- Get in touch circle -->
-            <a href="mailto:shritejpatil2806@gmail.com" class="footer-circle-btn magnetic-target">
+            <a href="contact.html" class="btn-hover-reveal footer-circle-btn magnetic-target" data-hover-text="Get in touch">
               <span>Get in touch</span>
             </a>
           </div>
@@ -674,10 +805,10 @@
             <div class="col-span-2 md:col-span-2">
               <p class="footer-bottom-label">Socials</p>
               <div class="flex flex-wrap gap-6 mt-2">
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Awwwards</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Instagram</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Twitter</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">LinkedIn</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Awwwards">Awwwards</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Instagram">Instagram</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Twitter">Twitter</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="LinkedIn">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -689,7 +820,8 @@
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay" id="mobile-menu">
     <div class="close-menu-btn" id="close-menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
@@ -697,25 +829,37 @@
 
     <div class="mt-20">
       <p class="text-[10px] uppercase tracking-widest text-white/40 mb-10 border-b border-white/10 pb-4">Navigation</p>
-      
+
       <div class="flex flex-col gap-6">
         <a href="#" class="mobile-menu-link group flex items-center">
           <span class="accent-dot"></span>
-          Home
+          <span class="btn-hover-reveal" data-hover-text="Home">Home</span>
         </a>
-        <a href="work.html" class="mobile-menu-link">Work</a>
-        <a href="#about" class="mobile-menu-link">About</a>
-        <a href="contact.html" class="mobile-menu-link">Contact</a>
+        <a href="work.html" class="mobile-menu-link btn-hover-reveal" data-hover-text="Work">Work</a>
+        <a href="#about" class="mobile-menu-link btn-hover-reveal" data-hover-text="About">About</a>
+        <a href="contact.html" class="mobile-menu-link btn-hover-reveal" data-hover-text="Contact">Contact</a>
       </div>
     </div>
 
     <div class="mt-auto">
       <p class="text-[10px] uppercase tracking-widest text-white/40 mb-6">Socials</p>
       <div class="flex flex-wrap gap-6 text-sm">
-        <a href="#" class="hover:text-white/60 transition-colors">Awwwards</a>
-        <a href="#" class="hover:text-white/60 transition-colors">Instagram</a>
-        <a href="#" class="hover:text-white/60 transition-colors">Twitter</a>
-        <a href="#" class="hover:text-white/60 transition-colors">LinkedIn</a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span class="btn-hover-reveal" data-hover-text="Awwwards">Awwwards</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <span class="btn-hover-reveal" data-hover-text="Instagram">Instagram</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          <span class="btn-hover-reveal" data-hover-text="Twitter">Twitter</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <span class="btn-hover-reveal" data-hover-text="LinkedIn">LinkedIn</span>
+        </a>
       </div>
     </div>
   </div>
@@ -757,97 +901,116 @@
           ease: "power4.inOut",
           delay: 1.5 // Keep loader visible for a moment
         })
-        .to(".hero-info-box", {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power4.out"
-        }, "-=0.4")
-        .from(".marquee-container", {
-          y: 100,
-          opacity: 0,
-          duration: 1.5,
-          ease: "power4.out"
-        }, "-=0.8");
+          .to(".hero-info-box", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+          }, "-=0.4")
+          .from(".marquee-container", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out"
+          }, "-=0.8");
       });
 
       // Stop scrolling during preload
       lenis.stop();
 
       // Marquee Animation
-       const marquee = document.getElementById("hero-marquee");
-       if (marquee) {
-         gsap.to(marquee, {
-           xPercent: -50,
-           repeat: -1,
-           duration: 15,
-           ease: "none"
-         });
-       }
+      const marquee = document.getElementById("hero-marquee");
+      if (marquee) {
+        gsap.to(marquee, {
+          xPercent: -50,
+          repeat: -1,
+          duration: 15,
+          ease: "none"
+        });
+      }
 
-       // GSAP Animations
-       gsap.registerPlugin(ScrollTrigger);
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
 
-       // Scroll reveals
-       const reveals = document.querySelectorAll(".reveal");
-       reveals.forEach((el) => {
-         gsap.fromTo(el, 
-           { y: 100, opacity: 0 },
-           { 
-             y: 0, 
-             opacity: 1, 
-             duration: 1.2, 
-             ease: "power3.out",
-             scrollTrigger: {
-               trigger: el,
-               start: "top 85%",
-               toggleActions: "play none none none"
-             }
-           }
-         );
-       });
+      // Scroll reveals
+      const reveals = document.querySelectorAll(".reveal");
+      reveals.forEach((el) => {
+        gsap.fromTo(el,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      });
 
-       // Works Section Hover Image Effect
-       const workItems = document.querySelectorAll(".work-item");
-       const hoverContainer = document.querySelector(".hover-image-container");
-       const hoverImage = hoverContainer.querySelector("img");
+      // Works Section Hover Image Effect
+      const workItems = document.querySelectorAll(".work-item");
+      const hoverContainer = document.querySelector(".hover-image-container");
+      const hoverImage = hoverContainer.querySelector("img");
+      const worksSection = document.getElementById("works");
 
-       workItems.forEach((item) => {
-         item.addEventListener("mouseenter", (e) => {
-           const imagePath = item.getAttribute("data-image");
-           
-           // Pre-load the image
-           hoverImage.src = imagePath;
-           
-           gsap.to(hoverContainer, {
-             opacity: 1,
-             scale: 1,
-             duration: 0.4,
-             ease: "power3.out"
-           });
-         });
+      let activeItem = null;
 
-         item.addEventListener("mouseleave", () => {
-           gsap.to(hoverContainer, {
-             opacity: 0,
-             scale: 0.8,
-             duration: 0.3,
-             ease: "power2.in"
-           });
-         });
+      window.addEventListener("mousemove", (e) => {
+        const item = e.target.closest(".work-item");
 
-         item.addEventListener("mousemove", (e) => {
-           gsap.to(hoverContainer, {
-             x: e.clientX - 200,
-             y: e.clientY - 125,
-             duration: 0.6,
-             ease: "power2.out"
-           });
-         });
-       });
+        if (item) {
+          if (item !== activeItem) {
+            activeItem = item;
+            hoverImage.src = item.getAttribute("data-image");
+            gsap.to(hoverContainer, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "power3.out"
+            });
+          }
+          gsap.to(hoverContainer, {
+            x: e.clientX - 200,
+            y: e.clientY - 125,
+            duration: 0.6,
+            ease: "power2.out"
+          });
+        } else if (activeItem) {
+          activeItem = null;
+          gsap.to(hoverContainer, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.3,
+            ease: "power2.in"
+          });
+        }
+      });
 
-       // Horizontal parallax for project images
-       const images = document.querySelectorAll(".project-image");
+      // Force hide if scrolling completely out of the works section
+      ScrollTrigger.create({
+        trigger: "#works",
+        start: "top bottom",
+        end: "bottom top",
+        onLeave: () => {
+          if (activeItem) {
+            activeItem = null;
+            gsap.to(hoverContainer, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.in" });
+          }
+        },
+        onLeaveBack: () => {
+          if (activeItem) {
+            activeItem = null;
+            gsap.to(hoverContainer, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.in" });
+          }
+        }
+      });
+
+      // Horizontal parallax for project images
+      const images = document.querySelectorAll(".project-image");
       images.forEach((img) => {
         gsap.to(img, {
           yPercent: 20,
@@ -893,9 +1056,9 @@
         const timeElement = document.getElementById("local-time");
         if (timeElement) {
           const now = new Date();
-          const options = { 
-            hour: '2-digit', 
-            minute: '2-digit', 
+          const options = {
+            hour: '2-digit',
+            minute: '2-digit',
             hour12: true,
             timeZoneName: 'short'
           };
@@ -907,7 +1070,7 @@
 
       // Custom Cursor Logic
       const cursor = document.querySelector(".custom-cursor");
-      
+
       window.addEventListener("mousemove", (e) => {
         gsap.to(cursor, {
           x: e.clientX,
@@ -938,7 +1101,7 @@
       // Split text animation for About heading
       const aboutHeading = document.querySelector("#about h2");
       const headingText = aboutHeading.innerText;
-      aboutHeading.innerHTML = headingText.split(" ").map(word => 
+      aboutHeading.innerHTML = headingText.split(" ").map(word =>
         `<span class="inline-block overflow-hidden"><span class="inline-block translate-y-full">${word}</span></span>`
       ).join(" ");
 
@@ -965,17 +1128,17 @@
         display: "flex",
         duration: 0
       })
-      .fromTo(mobileMenu, 
-        { clipPath: "circle(0% at 90% 10%)" },
-        { clipPath: "circle(150% at 90% 10%)", duration: 0.8, ease: "power3.inOut" }
-      )
-      .to(menuLinks, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "power2.out"
-      }, "-=0.4");
+        .fromTo(mobileMenu,
+          { clipPath: "circle(0% at 90% 10%)" },
+          { clipPath: "circle(150% at 90% 10%)", duration: 0.8, ease: "power3.inOut" }
+        )
+        .to(menuLinks, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "power2.out"
+        }, "-=0.4");
 
       menuToggle.addEventListener("click", () => {
         menuTl.play();
@@ -1001,14 +1164,14 @@
           const rect = btn.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
-          
+
           gsap.to(btn, {
             x: x * 0.3,
             y: y * 0.3,
             duration: 0.3,
             ease: "power2.out"
           });
-          
+
           const inner = btn.querySelector("span");
           if (inner) {
             gsap.to(inner, {
@@ -1019,7 +1182,7 @@
             });
           }
         });
-        
+
         btn.addEventListener("mouseleave", () => {
           gsap.to(btn, {
             x: 0,
@@ -1027,7 +1190,7 @@
             duration: 0.5,
             ease: "elastic.out(1, 0.3)"
           });
-          
+
           const inner = btn.querySelector("span");
           if (inner) {
             gsap.to(inner, {
@@ -1038,6 +1201,38 @@
             });
           }
         });
+      });
+      // ========================================
+      // Premium Letter-Reveal Hover Animation
+      // ========================================
+      function splitTextIntoChars(text) {
+        return text.split('').map(char => {
+          if (char === ' ') {
+            return '<span class="btn-char is-space">&nbsp;</span>';
+          }
+          return `<span class="btn-char">${char}</span>`;
+        }).join('');
+      }
+
+      document.querySelectorAll('.btn-hover-reveal').forEach(btn => {
+        const hoverText = btn.getAttribute('data-hover-text');
+        if (!hoverText) return;
+
+        // Preserve any extra child elements (like <sup>)
+        const extras = [];
+        btn.querySelectorAll('sup').forEach(el => {
+          extras.push(el.outerHTML);
+        });
+
+        const charsHTML = splitTextIntoChars(hoverText);
+
+        btn.innerHTML = `
+          <span class="btn-text-wrapper">
+            <span class="btn-text-row original-row">${charsHTML}</span>
+            <span class="btn-text-row clone-row">${charsHTML}</span>
+          </span>
+          ${extras.join('')}
+        `;
       });
     });
   </script>

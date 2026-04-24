@@ -199,6 +199,86 @@
       font-size: 1rem;
       color: #E1E0CC;
     }
+    /* Premium Letter-Reveal Hover Animation */
+    .btn-hover-reveal:not(.footer-circle-btn) {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-hover-reveal .btn-text-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-hover-reveal .btn-text-row {
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .btn-hover-reveal .btn-text-row .btn-char {
+      display: inline-block;
+      transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    /* Preserve spaces */
+    .btn-hover-reveal .btn-text-row .btn-char.is-space {
+      width: 0.3em;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row .btn-char {
+      transform: translateY(110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.original-row .btn-char {
+      transform: translateY(-110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.clone-row .btn-char {
+      transform: translateY(0%);
+    }
+
+    /* Staggered delay for each character — up to 20 chars */
+    .btn-hover-reveal .btn-char:nth-child(1) { transition-delay: 0.01s; }
+    .btn-hover-reveal .btn-char:nth-child(2) { transition-delay: 0.02s; }
+    .btn-hover-reveal .btn-char:nth-child(3) { transition-delay: 0.03s; }
+    .btn-hover-reveal .btn-char:nth-child(4) { transition-delay: 0.04s; }
+    .btn-hover-reveal .btn-char:nth-child(5) { transition-delay: 0.05s; }
+    .btn-hover-reveal .btn-char:nth-child(6) { transition-delay: 0.06s; }
+    .btn-hover-reveal .btn-char:nth-child(7) { transition-delay: 0.07s; }
+    .btn-hover-reveal .btn-char:nth-child(8) { transition-delay: 0.08s; }
+    .btn-hover-reveal .btn-char:nth-child(9) { transition-delay: 0.09s; }
+    .btn-hover-reveal .btn-char:nth-child(10) { transition-delay: 0.10s; }
+    .btn-hover-reveal .btn-char:nth-child(11) { transition-delay: 0.11s; }
+    .btn-hover-reveal .btn-char:nth-child(12) { transition-delay: 0.12s; }
+    .btn-hover-reveal .btn-char:nth-child(13) { transition-delay: 0.13s; }
+    .btn-hover-reveal .btn-char:nth-child(14) { transition-delay: 0.14s; }
+    .btn-hover-reveal .btn-char:nth-child(15) { transition-delay: 0.15s; }
+    .btn-hover-reveal .btn-char:nth-child(16) { transition-delay: 0.16s; }
+    .btn-hover-reveal .btn-char:nth-child(17) { transition-delay: 0.17s; }
+    .btn-hover-reveal .btn-char:nth-child(18) { transition-delay: 0.18s; }
+    .btn-hover-reveal .btn-char:nth-child(19) { transition-delay: 0.19s; }
+    .btn-hover-reveal .btn-char:nth-child(20) { transition-delay: 0.20s; }
+    .btn-hover-reveal .btn-char:nth-child(21) { transition-delay: 0.21s; }
+    .btn-hover-reveal .btn-char:nth-child(22) { transition-delay: 0.22s; }
+    .btn-hover-reveal .btn-char:nth-child(23) { transition-delay: 0.23s; }
+    .btn-hover-reveal .btn-char:nth-child(24) { transition-delay: 0.24s; }
+    .btn-hover-reveal .btn-char:nth-child(25) { transition-delay: 0.25s; }
+    .btn-hover-reveal .btn-char:nth-child(26) { transition-delay: 0.26s; }
+    .btn-hover-reveal .btn-char:nth-child(27) { transition-delay: 0.27s; }
+    .btn-hover-reveal .btn-char:nth-child(28) { transition-delay: 0.28s; }
+    .btn-hover-reveal .btn-char:nth-child(29) { transition-delay: 0.29s; }
+    .btn-hover-reveal .btn-char:nth-child(30) { transition-delay: 0.30s; }
   </style>
 </head>
 
@@ -311,9 +391,9 @@
               </div>
             </div>
             <div class="flex flex-wrap gap-4 mt-12 justify-center md:justify-start">
-              <a href="mailto:shritejpatil2806@gmail.com" class="footer-pill-btn">shritejpatil2806@gmail.com</a>
+              <a href="mailto:shritejpatil2806@gmail.com" class="btn-hover-reveal footer-pill-btn" data-hover-text="shritejpatil2806@gmail.com">shritejpatil2806@gmail.com</a>
             </div>
-            <a href="mailto:shritejpatil2806@gmail.com" class="footer-circle-btn magnetic-target">
+            <a href="contact.html" class="btn-hover-reveal footer-circle-btn magnetic-target" data-hover-text="Get in touch">
               <span>Get in touch</span>
             </a>
           </div>
@@ -329,10 +409,10 @@
             <div class="col-span-2 md:col-span-2">
               <p class="footer-bottom-label">Socials</p>
               <div class="flex flex-wrap gap-6 mt-2">
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Awwwards</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Instagram</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">Twitter</a>
-                <a href="#" class="footer-bottom-value hover:text-white/60 transition-colors">LinkedIn</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Awwwards">Awwwards</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Instagram">Instagram</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="Twitter">Twitter</a>
+                <a href="#" class="btn-hover-reveal footer-bottom-value hover:text-white/60 transition-colors" data-hover-text="LinkedIn">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -352,10 +432,10 @@
     <div class="mt-20">
         <p class="text-[10px] uppercase tracking-widest text-white/40 mb-10 border-b border-white/10 pb-4">Navigation</p>
         <div class="flex flex-col gap-6">
-          <a href="index.html" class="mobile-menu-link">Home</a>
+          <a href="index.html" class="btn-hover-reveal mobile-menu-link" data-hover-text="Home">Home</a>
           <a href="work.html" class="mobile-menu-link">Work</a>
-          <a href="index.html#about" class="mobile-menu-link">About</a>
-          <a href="contact.html" class="mobile-menu-link">Contact</a>
+          <a href="index.html#about" class="btn-hover-reveal mobile-menu-link" data-hover-text="About">About</a>
+          <a href="contact.html" class="btn-hover-reveal mobile-menu-link" data-hover-text="Contact">Contact</a>
         </div>
       </div>
   </div>

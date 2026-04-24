@@ -162,6 +162,15 @@
       transform: translateY(30px);
     }
 
+    .accent-dot {
+      width: 12px;
+      height: 12px;
+      background: #E1E0CC;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
     .close-menu-btn {
       width: 60px;
       height: 60px;
@@ -211,7 +220,7 @@
       font-size: 0.9rem;
       color: #E1E0CC;
     }
-    
+
     /* Preloader Styles */
     #preloader {
       position: fixed;
@@ -219,8 +228,20 @@
       background-color: #FF4646;
       z-index: 10000;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 2rem;
+    }
+
+    .loader-text {
+      color: white;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
     }
 
     .circle-loader {
@@ -241,24 +262,63 @@
       border-radius: 50%;
     }
 
-    .circle-loader .circle1 { animation-delay: 0.2s; }
-    .circle-loader .circle2 { animation-delay: 0.3s; }
-    .circle-loader .circle3 { animation-delay: 0.4s; }
-    .circle-loader .circle4 { animation-delay: 0.1s; }
-    .circle-loader .circle5 { animation-delay: 0.2s; }
-    .circle-loader .circle6 { animation-delay: 0.3s; }
-    .circle-loader .circle7 { animation-delay: 0s; }
-    .circle-loader .circle8 { animation-delay: 0.1s; }
-    .circle-loader .circle9 { animation-delay: 0.2s; }
+    .circle-loader .circle1 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle2 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle3 {
+      animation-delay: 0.4s;
+    }
+
+    .circle-loader .circle4 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle5 {
+      animation-delay: 0.2s;
+    }
+
+    .circle-loader .circle6 {
+      animation-delay: 0.3s;
+    }
+
+    .circle-loader .circle7 {
+      animation-delay: 0s;
+    }
+
+    .circle-loader .circle8 {
+      animation-delay: 0.1s;
+    }
+
+    .circle-loader .circle9 {
+      animation-delay: 0.2s;
+    }
 
     @keyframes circleScaleDelay {
-      0%, 70%, 100% { transform: scale3D(1, 1, 1); }
-      35% { transform: scale3D(0, 0, 1); }
+
+      0%,
+      70%,
+      100% {
+        transform: scale3D(1, 1, 1);
+      }
+
+      35% {
+        transform: scale3D(0, 0, 1);
+      }
     }
 
     @keyframes circleRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     @media (max-width: 768px) {
@@ -269,6 +329,7 @@
         column-gap: 4px;
       }
     }
+
     .send-btn:disabled {
       background: #333;
       cursor: not-allowed;
@@ -288,6 +349,176 @@
       display: none;
       opacity: 0;
     }
+
+    /* Premium Letter-Reveal Hover Animation */
+    .btn-hover-reveal:not(.footer-circle-btn) {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-hover-reveal .btn-text-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-hover-reveal .btn-text-row {
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .btn-hover-reveal .btn-text-row .btn-char {
+      display: inline-block;
+      transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    /* Preserve spaces */
+    .btn-hover-reveal .btn-text-row .btn-char.is-space {
+      width: 0.3em;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .btn-hover-reveal .btn-text-row.clone-row .btn-char {
+      transform: translateY(110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.original-row .btn-char {
+      transform: translateY(-110%);
+    }
+
+    .btn-hover-reveal:hover .btn-text-row.clone-row .btn-char {
+      transform: translateY(0%);
+    }
+
+    /* Staggered delay for each character — up to 20 chars */
+    .btn-hover-reveal .btn-char:nth-child(1) {
+      transition-delay: 0.01s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(2) {
+      transition-delay: 0.02s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(3) {
+      transition-delay: 0.03s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(4) {
+      transition-delay: 0.04s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(5) {
+      transition-delay: 0.05s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(6) {
+      transition-delay: 0.06s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(7) {
+      transition-delay: 0.07s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(8) {
+      transition-delay: 0.08s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(9) {
+      transition-delay: 0.09s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(10) {
+      transition-delay: 0.10s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(11) {
+      transition-delay: 0.11s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(12) {
+      transition-delay: 0.12s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(13) {
+      transition-delay: 0.13s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(14) {
+      transition-delay: 0.14s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(15) {
+      transition-delay: 0.15s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(16) {
+      transition-delay: 0.16s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(17) {
+      transition-delay: 0.17s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(18) {
+      transition-delay: 0.18s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(19) {
+      transition-delay: 0.19s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(20) {
+      transition-delay: 0.20s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(21) {
+      transition-delay: 0.21s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(22) {
+      transition-delay: 0.22s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(23) {
+      transition-delay: 0.23s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(24) {
+      transition-delay: 0.24s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(25) {
+      transition-delay: 0.25s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(26) {
+      transition-delay: 0.26s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(27) {
+      transition-delay: 0.27s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(28) {
+      transition-delay: 0.28s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(29) {
+      transition-delay: 0.29s;
+    }
+
+    .btn-hover-reveal .btn-char:nth-child(30) {
+      transition-delay: 0.30s;
+    }
   </style>
 </head>
 
@@ -305,6 +536,7 @@
       <div class="circle circle8"></div>
       <div class="circle circle9"></div>
     </div>
+    <div class="loader-text">CONTACT</div>
   </div>
 
   <div class="custom-cursor hidden md:block"></div>
@@ -314,7 +546,8 @@
   <div class="success-message" id="success-message">
     <h2 class="text-4xl font-medium mb-4">Message Sent!</h2>
     <p class="text-white/70">I'll get back to you as soon as possible.</p>
-    <button onclick="closeSuccess()" class="mt-8 px-6 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">Close</button>
+    <button onclick="closeSuccess()"
+      class="mt-8 px-6 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">Close</button>
   </div>
 
   <!-- Smooth scroll wrapper -->
@@ -338,7 +571,11 @@
               Let's start a<br>project together
             </h1>
 
-            <form id="contact-form" action="https://formspree.io/f/xoqgzpzk" method="POST" class="reveal">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="reveal">
+              <!-- GET YOUR FREE ACCESS KEY AT: https://web3forms.com/ -->
+              <input type="hidden" name="access_key" value="de33e7e3-3b9b-4a0f-840b-cd8a585b06ad">
+              <input type="hidden" name="subject" value="New Contact Form Submission - Portfolio">
+
               <!-- Field 1 -->
               <div class="form-group">
                 <span class="form-number">01</span>
@@ -371,7 +608,8 @@
               <div class="form-group border-b border-white/10">
                 <span class="form-number">05</span>
                 <label class="form-label">Your message</label>
-                <textarea name="message" class="form-input h-32 resize-none" placeholder="Hello Shritej, can you help me with ... *" required></textarea>
+                <textarea name="message" class="form-input h-32 resize-none"
+                  placeholder="Hello Shritej, can you help me with ... *" required></textarea>
               </div>
 
               <div class="relative h-40">
@@ -386,21 +624,23 @@
           <div class="lg:col-span-4 lg:pt-32">
             <div class="reveal" style="transition-delay: 0.2s;">
               <div class="mb-20 flex justify-center lg:justify-start">
-                <div class="w-24 h-24 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+                <div
+                  class="w-24 h-24 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
                   <img src="Hero-1.png" alt="Shritej" class="w-full h-full object-cover">
                 </div>
               </div>
 
               <div class="mb-12">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
 
               <div>
                 <span class="sidebar-label">Contact Details</span>
-                <a href="mailto:shritejpatil2806@gmail.com" class="sidebar-value">shritejpatil2806@gmail.com</a>
-                <a href="tel:+910000000000" class="sidebar-value">+91 000 000 0000</a>
+                <a href="mailto:shritejpatil2806@gmail.com" class="btn-hover-reveal sidebar-value"
+                  data-hover-text="shritejpatil2806@gmail.com">shritejpatil2806@gmail.com</a>
+                <a href="tel:+910000000000" class="sidebar-value">+91 9527859558</a>
               </div>
 
               <div class="mt-16">
@@ -414,10 +654,10 @@
               <div class="mt-16">
                 <span class="sidebar-label">Socials</span>
                 <div class="flex flex-col gap-2">
-                  <a href="#" class="sidebar-value mb-0">Awwwards</a>
-                  <a href="#" class="sidebar-value mb-0">Instagram</a>
-                  <a href="#" class="sidebar-value mb-0">Twitter</a>
-                  <a href="#" class="sidebar-value mb-0">LinkedIn</a>
+                  <a href="#" class="btn-hover-reveal sidebar-value mb-0" data-hover-text="Awwwards">Awwwards</a>
+                  <a href="#" class="btn-hover-reveal sidebar-value mb-0" data-hover-text="Instagram">Instagram</a>
+                  <a href="#" class="btn-hover-reveal sidebar-value mb-0" data-hover-text="Twitter">Twitter</a>
+                  <a href="#" class="btn-hover-reveal sidebar-value mb-0" data-hover-text="LinkedIn">LinkedIn</a>
                 </div>
               </div>
             </div>
@@ -440,10 +680,14 @@
           </div>
 
           <div class="flex gap-8">
-            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Awwwards</a>
-            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Instagram</a>
-            <a href="#" class="footer-value hover:opacity-50 transition-opacity">Twitter</a>
-            <a href="#" class="footer-value hover:opacity-50 transition-opacity">LinkedIn</a>
+            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+              data-hover-text="Awwwards">Awwwards</a>
+            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+              data-hover-text="Instagram">Instagram</a>
+            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+              data-hover-text="Twitter">Twitter</a>
+            <a href="#" class="btn-hover-reveal footer-value hover:opacity-50 transition-opacity"
+              data-hover-text="LinkedIn">LinkedIn</a>
           </div>
         </div>
       </footer>
@@ -453,7 +697,8 @@
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay" id="mobile-menu">
     <div class="close-menu-btn" id="close-menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
@@ -461,10 +706,55 @@
     <div class="mt-20">
       <p class="text-[10px] uppercase tracking-widest text-white/40 mb-10 border-b border-white/10 pb-4">Navigation</p>
       <div class="flex flex-col gap-6">
-        <a href="index.html" class="mobile-menu-link">Home</a>
-        <a href="work.html" class="mobile-menu-link">Work</a>
-        <a href="index.html#about" class="mobile-menu-link">About</a>
-        <a href="contact.html" class="mobile-menu-link">Contact</a>
+        <a href="index.html" class="mobile-menu-link btn-hover-reveal" data-hover-text="Home">Home</a>
+        <a href="work.html" class="mobile-menu-link btn-hover-reveal" data-hover-text="Work">Work</a>
+        <a href="index.html#about" class="mobile-menu-link btn-hover-reveal" data-hover-text="About">About</a>
+        <a href="contact.html" class="mobile-menu-link group flex items-center">
+          <span class="accent-dot"></span>
+          <span class="btn-hover-reveal" data-hover-text="Contact">Contact</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <p class="text-[10px] uppercase tracking-widest text-white/40 mb-6">Socials</p>
+      <div class="flex flex-wrap gap-6 text-sm">
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="btn-hover-reveal" data-hover-text="Awwwards">Awwwards</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span class="btn-hover-reveal" data-hover-text="Instagram">Instagram</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+            </path>
+          </svg>
+          <span class="btn-hover-reveal" data-hover-text="Twitter">Twitter</span>
+        </a>
+        <a href="#" class="group flex items-center gap-2 hover:text-white/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          <span class="btn-hover-reveal" data-hover-text="LinkedIn">LinkedIn</span>
+        </a>
       </div>
     </div>
   </div>
@@ -483,6 +773,7 @@
       // Preloader Animation
       window.addEventListener("load", () => {
         const preloader = document.getElementById("preloader");
+        const loaderText = document.querySelector(".loader-text");
         const tl = gsap.timeline({
           onComplete: () => {
             preloader.style.display = "none";
@@ -490,12 +781,23 @@
           }
         });
 
-        tl.to(preloader, {
-          yPercent: -100,
-          duration: 1.2,
-          ease: "power4.inOut",
-          delay: 1.0 // Keep loader visible for a moment
-        });
+        tl.to(loaderText, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out"
+        })
+          .to(loaderText, {
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.6,
+            ease: "power2.in"
+          })
+          .to(preloader, {
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut"
+          }, "-=0.2");
       });
 
       // Stop scrolling during preload
@@ -575,21 +877,23 @@
       if (contactForm) {
         contactForm.addEventListener("submit", async (e) => {
           e.preventDefault();
-          
+
           // Loading state
           submitBtn.disabled = true;
           btnText.textContent = "Sending...";
           gsap.to(submitBtn, { scale: 0.9, duration: 0.2 });
 
           const formData = new FormData(contactForm);
-          
+          const data = Object.fromEntries(formData.entries());
+
           try {
             const response = await fetch(contactForm.action, {
               method: "POST",
-              body: formData,
               headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
-              }
+              },
+              body: JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -609,26 +913,59 @@
           }
         });
       }
+
+      // ========================================
+      // Premium Letter-Reveal Hover Animation
+      // ========================================
+      function splitTextIntoChars(text) {
+        return text.split('').map(char => {
+          if (char === ' ') {
+            return '<span class="btn-char is-space">&nbsp;</span>';
+          }
+          return `<span class="btn-char">${char}</span>`;
+        }).join('');
+      }
+
+      document.querySelectorAll('.btn-hover-reveal').forEach(btn => {
+        const hoverText = btn.getAttribute('data-hover-text');
+        if (!hoverText) return;
+
+        // Preserve any extra child elements (like <sup>)
+        const extras = [];
+        btn.querySelectorAll('sup').forEach(el => {
+          extras.push(el.outerHTML);
+        });
+
+        const charsHTML = splitTextIntoChars(hoverText);
+
+        btn.innerHTML = `
+          <span class="btn-text-wrapper">
+            <span class="btn-text-row original-row">${charsHTML}</span>
+            <span class="btn-text-row clone-row">${charsHTML}</span>
+          </span>
+          ${extras.join('')}
+        `;
+      });
     });
 
     function showSuccess() {
       const successOverlay = document.getElementById("success-message");
       successOverlay.style.display = "block";
-      gsap.to(successOverlay, { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.6, 
-        ease: "power3.out" 
+      gsap.to(successOverlay, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out"
       });
       lenis.stop(); // Stop scrolling
     }
 
     function closeSuccess() {
       const successOverlay = document.getElementById("success-message");
-      gsap.to(successOverlay, { 
-        opacity: 0, 
-        y: 20, 
-        duration: 0.4, 
+      gsap.to(successOverlay, {
+        opacity: 0,
+        y: 20,
+        duration: 0.4,
         ease: "power3.in",
         onComplete: () => {
           successOverlay.style.display = "none";
